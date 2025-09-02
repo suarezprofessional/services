@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Suarez Professional Services</title>
+    <meta name="description" content="Contact Suarez Professional Services for professional notary public and bookkeeping services. Schedule an appointment with Peter today.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-briefcase me-2"></i>Suarez Professional Services
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notary.html">Notary Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookkeeping.html">Bookkeeping</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-info text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="fas fa-envelope me-3"></i>Contact Us
+                    </h1>
+                    <p class="lead">Get in touch to schedule your consultation or ask about our services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <div class="bg-light p-5 rounded shadow-sm">
+                        <h2 class="fw-bold mb-4">Send Us a Message</h2>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                </div>
+                                <div class="col-12">
+                                    <label for="service" class="form-label">Service of Interest *</label>
+                                    <select class="form-select" id="service" name="service" required>
+                                        <option value="">Please select a service</option>
+                                        <option value="notary">Notary Public Services</option>
+                                        <option value="bookkeeping">Bookkeeping Services</option>
+                                        <option value="both">Both Notary & Bookkeeping</option>
+                                        <option value="consultation">General Consultation</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" 
+                                              placeholder="Please describe your needs or questions..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="urgentRequest" name="urgentRequest">
+                                        <label class="form-check-label" for="urgentRequest">
+                                            This is an urgent request
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Success/Error Messages -->
+                        <div id="formMessages" class="mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Contact Information Sidebar -->
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <!-- Business Info -->
+                        <div class="bg-white p-4 rounded shadow-sm mb-4">
+                            <h3 class="fw-bold mb-3">
+                                <i class="fas fa-building text-info me-2"></i>Business Information
+                            </h3>
+                            <div class="contact-item mb-3">
+                                <i class="fas fa-briefcase text-info me-3"></i>
+                                <div>
+                                    <strong>Suarez Professional Services</strong><br>
+                                    <small class="text-muted">Professional Notary & Bookkeeping</small>
+                                </div>
+                            </div>
+                            <div class="contact-item mb-3">
+                                <i class="fas fa-user text-info me-3"></i>
+                                <div>
+                                    <strong>Contact Person: Peter</strong><br>
+                                    <small class="text-muted">Professional Services Specialist</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Services Quick Access -->
+                        <div class="bg-white p-4 rounded shadow-sm mb-4">
+                            <h4 class="fw-bold mb-3">
+                                <i class="fas fa-cogs text-info me-2"></i>Our Services
+                            </h4>
+                            <div class="d-grid gap-2">
+                                <a href="notary.html" class="btn btn-outline-info">
+                                    <i class="fas fa-stamp me-2"></i>Notary Services
+                                </a>
+                                <a href="bookkeeping.html" class="btn btn-outline-info">
+                                    <i class="fas fa-calculator me-2"></i>Bookkeeping Services
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Business Hours -->
+                        <div class="bg-white p-4 rounded shadow-sm mb-4">
+                            <h4 class="fw-bold mb-3">
+                                <i class="fas fa-clock text-info me-2"></i>Business Hours
+                            </h4>
+                            <div class="hours-list">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Monday - Friday:</span>
+                                    <strong>By Appointment</strong>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Saturday:</span>
+                                    <strong>By Appointment</strong>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Sunday:</span>
+                                    <strong>Emergency Only</strong>
+                                </div>
+                                <hr class="my-3">
+                                <div class="text-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        Mobile services available with advance scheduling
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="bg-danger text-white p-4 rounded shadow-sm">
+                            <h4 class="fw-bold mb-3">
+                                <i class="fas fa-exclamation-triangle me-2"></i>Emergency Services
+                            </h4>
+                            <p class="mb-3">
+                                Need urgent notary services? We offer emergency appointments 
+                                for time-sensitive documents.
+                            </p>
+                            <div class="text-center">
+                                <small>
+                                    <i class="fas fa-clock me-1"></i>
+                                    Additional fees may apply for emergency services
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Service Areas -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Service Areas</h2>
+                    <p class="lead text-muted">We provide services to clients throughout the local area</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="service-area-card h-100 p-4 bg-white rounded shadow-sm">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-map-marker-alt text-info display-4 mb-3"></i>
+                            <h3 class="fw-bold">Office Services</h3>
+                        </div>
+                        <p class="text-muted mb-3">
+                            Visit our professional office for notary services and bookkeeping consultations. 
+                            Comfortable, private setting for all your business needs.
+                        </p>
+                        <div class="features-list">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Private consultation rooms</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Secure document handling</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Professional atmosphere</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-area-card h-100 p-4 bg-white rounded shadow-sm">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-mobile-alt text-info display-4 mb-3"></i>
+                            <h3 class="fw-bold">Mobile Services</h3>
+                        </div>
+                        <p class="text-muted mb-3">
+                            Can't make it to our office? We come to you! Mobile notary services 
+                            available for your convenience at home, office, or other locations.
+                        </p>
+                        <div class="features-list">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Home visits available</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Office and business locations</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <span>Flexible scheduling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="text-center mb-5">
+                        <h2 class="display-5 fw-bold">Frequently Asked Questions</h2>
+                    </div>
+                    
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                    What do I need to bring for notary services?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Please bring a valid government-issued photo ID (driver's license, passport, or state ID), 
+                                    the unsigned documents that need notarization, and all parties who need to sign must be present. 
+                                    Payment can be made by cash or check.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                    How quickly can I schedule an appointment?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We typically accommodate same-day appointments when possible. For urgent needs, 
+                                    we offer emergency services. Mobile notary services may require 24-48 hours advance notice 
+                                    depending on location and availability.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                    What bookkeeping software do you work with?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We specialize in QuickBooks (Online and Desktop versions) and can work with most popular 
+                                    accounting software. We also provide QuickBooks setup, training, and ongoing support to help 
+                                    you manage your finances effectively.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                    Do you offer free consultations?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! We offer free initial consultations for bookkeeping services to assess your needs 
+                                    and recommend the best package for your business. This helps us understand your requirements 
+                                    and provide you with accurate pricing.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-info text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold mb-4">Ready to Get Started?</h2>
+                    <p class="lead mb-4">
+                        Contact Suarez Professional Services today for reliable notary and bookkeeping solutions. 
+                        Professional service you can trust.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <button class="btn btn-light btn-lg" onclick="document.getElementById('contactForm').scrollIntoView()">
+                            <i class="fas fa-envelope me-2"></i>Send Message
+                        </button>
+                        <a href="tel:" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-phone me-2"></i>Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold mb-3">Suarez Professional Services</h5>
+                    <p class="text-muted">Professional notary public and bookkeeping services you can trust.</p>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold mb-3">Contact Information</h6>
+                    <p class="text-muted mb-1">
+                        <i class="fas fa-user me-2"></i>Contact: Peter
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="fas fa-envelope me-2"></i>Professional Services Available
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="text-muted mb-0">&copy; 2024 Suarez Professional Services. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
