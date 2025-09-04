@@ -283,11 +283,34 @@
       el.style.animationDelay = `${index * 0.5}s`;
     });
 
-    // Simple form handling
+    // Enhanced form handling with email submission
     const form = document.getElementById('subscribeForm');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Thank you for subscribing! We\'ll notify you when we launch.');
+    //  alert('Thank you for subscribing! We\'ll notify you when we launch.');
+          
+      const emailInput = form.querySelector('input[type="email"]');
+      const senderEmail = emailInput.value;
+      const currentTime = new Date().toLocaleString();
+      
+      const subject = 'New Subscription Request - Coming Soon Page';
+      const body = `New Subscription Request
+Subscriber Details:
+- Email Address: ${senderEmail}
+- Submission Time: ${currentTime}
+- Source: Coming Soon Page
+This subscriber wants to be notified when the new website launches.
+--
+This message was automatically generated from the Suarez Professional Services coming soon page.`;
+      
+      const mailtoLink = `mailto:suareznotarypublic@zohomail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Show confirmation and clear form
+      alert('Thank you for subscribing! Your email client will open to send the subscription request.');
+      emailInput.value = '';
     });
   </script>
 </body>
