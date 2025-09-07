@@ -1,216 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suarez Professional Services | Notary & Bookkeeping Services</title>
-    <meta name="description" content="Professional notary public and bookkeeping services by Suarez Professional Services. Trusted, reliable, and professional business solutions.">
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coming Soon - Our New Site Launch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffffff 0%, #e0f7fa 50%, #b3e5fc 100%);
+      min-height: 100vh;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      color: #1565c0;
+      margin: 0;
+      padding: 0 1rem;
+    }
+    .center-content {
+      max-width: 600px;
+    }
+    .animated-text {
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+      animation-fill-mode: forwards;
+    }
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+    @keyframes floating {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    .wave {
+      display: inline-block;
+      animation: wave 1.5s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+    @keyframes wave {
+      0%,
+      80%,
+      100% {
+        transform: rotate(0deg);
+      }
+      20% {
+        transform: rotate(-10deg);
+      }
+      40% {
+        transform: rotate(10deg);
+      }
+    }
+    .wave:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .wave:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    .wave:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+    .wave:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+    .wave:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+    .wave:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+    .wave:nth-child(7) {
+      animation-delay: 0.6s;
+    }
+    .wave:nth-child(8) {
+      animation-delay: 0.7s;
+    }
+    .wave:nth-child(9) {
+      animation-delay: 0.8s;
+    }
+    .wave:nth-child(10) {
+      animation-delay: 0.9s;
+    }
+    .wave:nth-child(11) {
+      animation-delay: 1.0s;
+    }
+    /* Additional styles for new sections */
+    .section {
+      margin: 2rem 0;
+      padding: 1rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(5px);
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .feature-card {
+      padding: 1rem;
+      text-align: center;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .feature-card img {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      display: block;
+    }
+    header {
+      width: 100%;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid #b3e5fc;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #1565c0;
+      font-weight: bold;
+    }
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+    }
+    .hero {
+      margin: 2rem 0;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">
-                <i class="fas fa-briefcase me-2"></i>Suarez Professional Services
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="notary.html">Notary Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bookkeeping.html">Bookkeeping</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <!-- Header -->
+  <header>
+    <div class="font-bold text-xl text-blue-900">Suarez Professional Services</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#subscribe">Subscribe</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <h1 class="display-4 fw-bold text-white mb-4">
-                            Professional Services You Can Trust
-                        </h1>
-                        <p class="lead text-light mb-4">
-                            Providing reliable notary public and comprehensive bookkeeping services 
-                            to individuals and businesses with integrity and professionalism.
-                        </p>
-                        <div class="d-flex flex-column flex-sm-row gap-3">
-                            <a href="contact.html" class="btn btn-primary btn-lg">
-                                <i class="fas fa-phone me-2"></i>Get Started Today
-                            </a>
-                            <a href="#services" class="btn btn-outline-light btn-lg">
-                                <i class="fas fa-info-circle me-2"></i>Learn More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image text-center">
-                        <i class="fas fa-handshake display-1 text-primary opacity-75"></i>
-                    </div>
-                </div>
-            </div>
+  <!-- Hero Section -->
+  <div class="hero" id="hero">
+    <div class="center-content">
+      <div class="mb-8 pulse">
+        <h1 class="text-5xl md:text-7xl font-bold text-blue-900 mb-4 animated-text">
+          Coming Soon
+        </h1>
+      </div>
+      <p class="text-2xl md:text-3xl text-blue-700 mb-6 animated-text">
+        We're
+        <span class="wave">W</span><span class="wave">o</span><span class="wave">r</span><span class="wave">k</span><span class="wave">i</span><span class="wave">n</span><span class="wave">g</span>
+        <span class="wave">H</span><span class="wave">a</span><span class="wave">r</span><span class="wave">d</span>
+        on Something Amazing!
+      </p>
+      <p class="text-lg md:text-xl text-blue-600 mb-8 animated-text">
+        Stay tuned for updates. Our new site will launch soon with exciting features and fresh content.
+      </p>
+      <div class="flex justify-center mb-8 animated-text">
+        <div class="w-32 h-32 bg-blue-200 rounded-full flex items-center justify-center floating">
+          <img
+            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7a53f149-b8fa-488f-b6aa-cbf497d978cd.png"
+            alt="Stylized icon of a clock with gears ticking representing time until launch, in shades of blue and white with clean lines and futuristic design"
+            class="rounded-full"
+          />
         </div>
-    </section>
+      </div>
+      <div class="space-x-4 animated-text">
+        <button
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300"
+        >
+          Notify Me
+        </button>
+        <button
+          class="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300"
+        >
+          Learn More
+        </button>
+      </div>
+    </div>
+  </div>
 
-    <!-- Services Overview -->
-    <section id="services" class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="display-5 fw-bold">Our Professional Services</h2>
-                    <p class="lead text-muted">Comprehensive solutions for your business and personal needs</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="service-card h-100 p-4 bg-white rounded shadow-sm">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-stamp display-4 text-primary mb-3"></i>
-                            <h3 class="h4 fw-bold">Notary Public Services</h3>
-                        </div>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Document Authentication</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Sworn Affidavits</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Real Estate Documents</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Power of Attorney</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mobile Notary Available</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="notary.html" class="btn btn-primary">
-                                <i class="fas fa-arrow-right me-2"></i>View Notary Services
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="service-card h-100 p-4 bg-white rounded shadow-sm">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-calculator display-4 text-primary mb-3"></i>
-                            <h3 class="h4 fw-bold">Bookkeeping Services</h3>
-                        </div>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Financial Record Keeping</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Tax Preparation Support</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Payroll Processing</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Financial Reporting</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>QuickBooks Setup & Training</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="bookkeeping.html" class="btn btn-primary">
-                                <i class="fas fa-arrow-right me-2"></i>View Bookkeeping Services
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- About Section -->
+  <section class="section" id="about">
+    <h2 class="text-3xl font-bold mb-4">About Our Launch</h2>
+    <p class="text-lg">We're excited to introduce our brand new website, packed with innovative tools, user-friendly designs, and content tailored for your needs. Get ready for an immersive online experience.</p>
+  </section>
 
-    <!-- Why Choose Us -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="display-5 fw-bold">Why Choose Suarez Professional Services</h2>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4 text-center">
-                    <div class="feature-item p-4">
-                        <i class="fas fa-shield-alt display-4 text-primary mb-3"></i>
-                        <h4 class="fw-bold">Trusted & Reliable</h4>
-                        <p class="text-muted">Years of experience providing professional services with integrity and confidentiality.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="feature-item p-4">
-                        <i class="fas fa-clock display-4 text-primary mb-3"></i>
-                        <h4 class="fw-bold">Flexible Scheduling</h4>
-                        <p class="text-muted">Convenient appointment times and mobile services to meet your busy schedule.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="feature-item p-4">
-                        <i class="fas fa-dollar-sign display-4 text-primary mb-3"></i>
-                        <h4 class="fw-bold">Competitive Pricing</h4>
-                        <p class="text-muted">Fair, transparent pricing for all services with no hidden fees or surprises.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <h2 class="text-3xl font-bold mb-4">Key Features to Expect</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/96e471e5-7b5e-4cd3-88ba-80a456f43496.png" alt="Icon of a gear representing customization and settings with blue and white colors in a sleek, modern style" />
+        <h3 class="font-bold mt-2">Customizable Dashboard</h3>
+        <p>Customize your personal dashboard with widgets that suit your workflow.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1ab65149-9ee3-49d5-bc79-83c5c6ccdd1d.png" alt="Icon of a lightning bolt symbolizing speed and fast loading times in electric blue hue" />
+        <h3 class="font-bold mt-2">Lightning Fast Performance</h3>
+        <p>Experience blazingly fast load times with our optimized infrastructure.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/53793060-359c-4c48-b7d5-233e1b544ad2.png" alt="Icon of a mobile phone indicating responsive design for all devices in blue and white" />
+        <h3 class="font-bold mt-2">Mobile Responsive</h3>
+        <p>Enjoy seamless access on any device, from desktop to smartphone.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Call to Action -->
-    <section class="py-5 bg-primary text-white">
-        <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-8">
-                    <h2 class="display-5 fw-bold mb-4">Ready to Get Started?</h2>
-                    <p class="lead mb-4">
-                        Contact us today to discuss your notary or bookkeeping needs. 
-                        We're here to provide professional, reliable service.
-                    </p>
-                    <a href="contact.html" class="btn btn-light btn-lg">
-                        <i class="fas fa-envelope me-2"></i>Contact Us Now
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Subscribe Section -->
+  <section class="section" id="subscribe">
+    <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+    <p class="mb-4">Enter your email to get notified when we launch!</p>
+    <form id="subscribeForm" class="flex flex-col md:flex-row justify-center items-center">
+      <input
+        type="email"
+        placeholder="Your email address"
+        class="border border-blue-400 rounded-full px-4 py-2 mb-2 md:mb-0 md:mr-2 w-full md:w-auto"
+        required
+      />
+      <button
+        type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+      >
+        Subscribe
+      </button>
+    </form>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-light py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class="fw-bold mb-3">Suarez Professional Services</h5>
-                    <p class="text-muted">Professional notary public and bookkeeping services you can trust.</p>
-                </div>
-                <div class="col-md-6">
-                    <h6 class="fw-bold mb-3">Contact Information</h6>
-                    <p class="text-muted mb-1">
-                        <i class="fas fa-user me-2"></i>Contact: Peter
-                    </p>
-                    <p class="text-muted mb-1">
-                        <i class="fas fa-envelope me-2"></i>
-                        <a href="mailto:peter@suarezprofessionalservices.com" class="text-muted text-decoration-none">peter@suarezprofessionalservices.com</a>
-                    </p>
-                </div>
-            </div>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="text-muted mb-0">&copy; 2025 Suarez Professional Services. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Suarez Professional Services. All rights reserved.</p>
+  </footer>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="js/main.js"></script>
+  <script>
+    // Animation delays for animated-text elements
+    const animatedElements = document.querySelectorAll('.animated-text');
+    animatedElements.forEach((el, index) => {
+      el.style.animationDelay = `${index * 0.5}s`;
+    });
+
+    // Enhanced form handling with email submission
+    const form = document.getElementById('subscribeForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const emailInput = form.querySelector('input[type="email"]');
+      const senderEmail = emailInput.value;
+      const currentTime = new Date().toLocaleString();
+      
+      const subject = 'New Subscription Request - Coming Soon Page';
+      const body = `New Subscription Request
+
+Subscriber Details:
+- Email Address: ${senderEmail}
+- Submission Time: ${currentTime}
+- Source: Coming Soon Page
+
+This subscriber wants to be notified when the new website launches.
+
+--
+This message was automatically generated from the Suarez Professional Services coming soon page.`;
+      
+      const mailtoLink = `mailto:suareznotarypublic@zohomail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Show confirmation and clear form
+      alert('Thank you for subscribing! Your email client will open to send the subscription request.');
+      emailInput.value = '';
+    });
+  </script>
 </body>
 </html>
