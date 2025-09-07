@@ -1,0 +1,18 @@
+# Site configuration data
+title: "Suarez Professional Services"
+description: "Professional notary public and bookkeeping services by Suarez Professional Services. Trusted, reliable, and professional business solutions."
+contact_email: "peter@suarezprofessionalservices.com"
+phone: ""
+address: ""
+business_hours: "By Appointment"
+
+# Social media links (optional)
+social:
+  facebook: ""
+  linkedin: ""
+  twitter: ""
+
+# SEO settings
+seo:
+  keywords: "notary public, bookkeeping, professional services, document authentication, financial records"
+  author: "Peter Suarez"
