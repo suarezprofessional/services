@@ -1,6 +1,7 @@
 # Netlify CMS Configuration for Suarez Professional Services
 backend:
-  name: test-repo
+  name: git-gateway
+  branch: main
 
 # Media storage
 media_folder: "assets/uploads"
