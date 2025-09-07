@@ -1,0 +1,20 @@
+title: "Bookkeeping Services"
+short_description: "Comprehensive financial record keeping and bookkeeping support"
+detailed_description: |
+  Professional bookkeeping services to help your business maintain accurate financial records and stay organized. We provide comprehensive support for small businesses and individuals who need reliable financial record management.
+  
+  Our services include transaction recording, reconciliation, financial reporting, and preparation support for tax filings. We work with popular accounting software and can help establish efficient bookkeeping systems.
+
+icon: "fas fa-calculator"
+category: "bookkeeping"
+starting_price: "Starting at $50/hour"
+features:
+  - "Financial Record Keeping"
+  - "Account Reconciliation"
+  - "Tax Preparation Support"
+  - "Payroll Processing"
+  - "Financial Reporting"
+  - "QuickBooks Setup & Training"
+  - "Monthly Financial Statements"
+featured: true
+available: true

@@ -1,0 +1,139 @@
+# Netlify CMS Configuration for Suarez Professional Services
+backend:
+  name: git-gateway
+  branch: main
+
+# Media storage
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Site settings
+site_url: https://www.suarezprofessionalservices.com
+display_url: https://www.suarezprofessionalservices.com
+
+# Collections
+collections:
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "_data/settings.yml"
+        description: "General site settings and contact information"
+        fields:
+          - {label: "Site Title", name: "title", widget: "string", default: "Suarez Professional Services"}
+          - {label: "Site Description", name: "description", widget: "text", default: "Professional notary public and bookkeeping services"}
+          - {label: "Contact Email", name: "contact_email", widget: "string"}
+          - {label: "Phone Number", name: "phone", widget: "string", required: false}
+          - {label: "Business Address", name: "address", widget: "text", required: false}
+          - {label: "Business Hours", name: "business_hours", widget: "text", default: "By Appointment"}
+          - {label: "Tagline", name: "tagline", widget: "string", default: "Professional Services You Can Trust"}
+
+  # Services (not products)
+  - name: "services"
+    label: "Services"
+    folder: "_content/services"
+    create: true
+    slug: "{{slug}}"
+    extension: "yml"
+    format: "yaml"
+    fields:
+      - {label: "Service Name", name: "title", widget: "string"}
+      - {label: "Brief Description", name: "short_description", widget: "text"}
+      - {label: "Detailed Description", name: "detailed_description", widget: "markdown"}
+      - {label: "Font Awesome Icon", name: "icon", widget: "string", default: "fas fa-briefcase", hint: "e.g., fas fa-stamp for notary, fas fa-calculator for bookkeeping"}
+      - {label: "Service Category", name: "category", widget: "select", options: ["notary", "bookkeeping", "consultation", "mobile-services"]}
+      - {label: "Starting Price", name: "starting_price", widget: "string", required: false, hint: "e.g., Starting at $25"}
+      - label: "Service Features"
+        name: "features"
+        widget: "list"
+        field: {label: "Feature", name: "feature", widget: "string"}
+      - {label: "Featured Service", name: "featured", widget: "boolean", default: false}
+      - {label: "Available", name: "available", widget: "boolean", default: true}
+
+  # Service Areas / Specialties
+  - name: "specialties"
+    label: "Service Specialties"
+    folder: "_content/specialties"
+    create: true
+    slug: "{{slug}}"
+    extension: "yml"
+    format: "yaml"
+    fields:
+      - {label: "Specialty Name", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "markdown"}
+      - {label: "Related Services", name: "related_services", widget: "list", field: {label: "Service", name: "service", widget: "string"}}
+      - {label: "Icon", name: "icon", widget: "string", default: "fas fa-star"}
+
+  # Client Testimonials
+  - name: "testimonials"
+    label: "Client Testimonials"
+    folder: "_content/testimonials"
+    create: true
+    slug: "{{client_name}}"
+    extension: "yml" 
+    format: "yaml"
+    fields:
+      - {label: "Client Name", name: "client_name", widget: "string"}
+      - {label: "Client Title/Business", name: "client_title", widget: "string", required: false}
+      - {label: "Testimonial", name: "testimonial", widget: "text"}
+      - {label: "Service Used", name: "service_type", widget: "select", options: ["notary", "bookkeeping", "both", "consultation"]}
+      - {label: "Rating", name: "rating", widget: "number", value_type: "int", min: 1, max: 5, default: 5}
+      - {label: "Show on Homepage", name: "featured", widget: "boolean", default: false}
+      - {label: "Date", name: "date", widget: "datetime", default: ""}
+
+  # FAQ
+  - name: "faq"
+    label: "FAQ"
+    folder: "_content/faq"
+    create: true
+    slug: "{{slug}}"
+    extension: "yml"
+    format: "yaml" 
+    fields:
+      - {label: "Question", name: "question", widget: "string"}
+      - {label: "Answer", name: "answer", widget: "markdown"}
+      - {label: "Category", name: "category", widget: "select", options: ["notary", "bookkeeping", "general", "pricing", "appointments"]}
+      - {label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1}
+      - {label: "Show on Main FAQ Page", name: "show_main", widget: "boolean", default: true}
+
+  # Service Areas (Geographic)
+  - name: "service_areas"
+    label: "Service Areas"
+    folder: "_content/service_areas"
+    create: true
+    slug: "{{slug}}"
+    extension: "yml"
+    format: "yaml"
+    fields:
+      - {label: "Area Name", name: "area_name", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Available Services", name: "available_services", widget: "list", field: {label: "Service", name: "service", widget: "string"}}
+      - {label: "Mobile Service Available", name: "mobile_available", widget: "boolean", default: true}
+      - {label: "Additional Travel Fee", name: "travel_fee", widget: "string", required: false}
+
+  # Business Hours & Availability
+  - name: "availability"
+    label: "Business Hours"
+    files:
+      - name: "hours"
+        label: "Operating Hours"
+        file: "_data/hours.yml"
+        fields:
+          - label: "Weekly Schedule"
+            name: "schedule"
+            widget: "object"
+            fields:
+              - {label: "Monday", name: "monday", widget: "string", default: "By Appointment"}
+              - {label: "Tuesday", name: "tuesday", widget: "string", default: "By Appointment"}
+              - {label: "Wednesday", name: "wednesday", widget: "string", default: "By Appointment"}
+              - {label: "Thursday", name: "thursday", widget: "string", default: "By Appointment"}
+              - {label: "Friday", name: "friday", widget: "string", default: "By Appointment"}
+              - {label: "Saturday", name: "saturday", widget: "string", default: "By Appointment"}
+              - {label: "Sunday", name: "sunday", widget: "string", default: "Closed"}
+          - {label: "Special Notes", name: "notes", widget: "text", required: false}
+          - {label: "Holiday Schedule Note", name: "holiday_note", widget: "string", default: "Holiday hours may vary"}
+
+# Publishing workflow
+publish_mode: editorial_workflow
