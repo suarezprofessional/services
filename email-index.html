@@ -250,12 +250,30 @@
       </div>
     </div>
   </section>
+  
+  <div class="container">
+  <h1>FormSubmit Demo</h1>
+  <form target="_blank" action="https://formsubmit.co/suareznotarypublic@zohomail.com" method="POST">
+    <div class="form-group">
+      <div class="form-row">
+        
+        
+          <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+        
+      </div>
+    </div>
+    
+
+    
+    <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
+  </form>
+</div>
 
   <!-- Subscribe Section -->
   <section class="section" id="subscribe">
     <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
     <p class="mb-4">Enter your email to get notified when we launch!</p>
-    <form id="subscribeForm" class="flex flex-col md:flex-row justify-center items-center">
+    <form id="subscribeForm" class="flex flex-col md:flex-row justify-center items-center" target="_blank" action="https://formsubmit.co/suareznotarypublic.com" method="POST">   
       <input
         type="email"
         placeholder="Your email address"
@@ -283,36 +301,11 @@
       el.style.animationDelay = `${index * 0.5}s`;
     });
 
-    // Enhanced form handling with email submission
+    // Simple form handling
     const form = document.getElementById('subscribeForm');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      const emailInput = form.querySelector('input[type="email"]');
-      const senderEmail = emailInput.value;
-      const currentTime = new Date().toLocaleString();
-      
-      const subject = 'New Subscription Request - Coming Soon Page';
-      const body = `New Subscription Request
-
-Subscriber Details:
-- Email Address: ${senderEmail}
-- Submission Time: ${currentTime}
-- Source: Coming Soon Page
-
-This subscriber wants to be notified when the new website launches.
-
---
-This message was automatically generated from the Suarez Professional Services coming soon page.`;
-      
-      const mailtoLink = `mailto:suareznotarypublic@zohomail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
-      // Show confirmation and clear form
-      alert('Thank you for subscribing! Your email client will open to send the subscription request.');
-      emailInput.value = '';
+      alert('Thank you for subscribing! We\'ll notify you when we launch.');
     });
   </script>
 </body>
