@@ -20,5 +20,15 @@ format:
 subfolders:
 
 components:
+label:
+type:
+fields:
+component:
+description: 
+default:
+list:
+hidden: 
+
+
 
 
