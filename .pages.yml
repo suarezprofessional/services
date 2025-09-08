@@ -1,33 +1,33 @@
 media:
-name:
-label:
-input:
-output:
-path:
-extensions:
-categories:
+ name:
+ label:
+ input:
+ output:
+ path:
+ extensions:
+ categories:
 
 content:
-name:
-label:
-type:
-path:
-fields:
-filename:
-exclude:
-view:
-format:
-subfolders:
+ name:
+ label:
+ type:
+ path:
+ fields:
+ filename:
+ exclude:
+ view:
+ format:
+ subfolders:
 
 components:
-label:
-type:
-fields:
-component:
-description: 
-default:
-list:
-hidden: 
+ label:
+ type:
+ fields:
+ component:
+ description: 
+ default:
+ list:
+ hidden: 
 
 
 
