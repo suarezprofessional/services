@@ -33,90 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Contact form functionality
+    // Contact form functionality - simplified for mailto approach
     function initContactForm() {
-        const contactForm = document.getElementById('contactForm');
-        const formMessages = document.getElementById('formMessages');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const formData = new FormData(contactForm);
-                const formObject = {};
-                
-                // Convert FormData to object
-                for (let [key, value] of formData.entries()) {
-                    formObject[key] = value;
-                }
-                
-                // Validate form
-                if (validateForm(formObject)) {
-                    // Show loading state
-                    const submitButton = contactForm.querySelector('button[type="submit"]');
-                    const originalText = submitButton.innerHTML;
-                    submitButton.classList.add('loading');
-                    submitButton.disabled = true;
-                    
-                    // Simulate form submission (replace with actual form handling)
-                    setTimeout(function() {
-                        showFormMessage('success', 'Thank you for your message! We will contact you soon.');
-                        contactForm.reset();
-                        
-                        // Reset button
-                        submitButton.classList.remove('loading');
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = originalText;
-                    }, 2000);
-                } else {
-                    showFormMessage('error', 'Please fill in all required fields correctly.');
-                }
-            });
-        }
-        
-        // Form validation
-        function validateForm(data) {
-            const required = ['firstName', 'lastName', 'email', 'service', 'message'];
-            
-            for (let field of required) {
-                if (!data[field] || data[field].trim() === '') {
-                    return false;
-                }
-            }
-            
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                return false;
-            }
-            
-            return true;
-        }
-        
-        // Show form messages
-        function showFormMessage(type, message) {
-            if (formMessages) {
-                const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
-                const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-triangle';
-                
-                formMessages.innerHTML = `
-                    <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-                        <i class="${icon} me-2"></i>${message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                `;
-                
-                // Auto hide after 5 seconds
-                setTimeout(function() {
-                    const alert = formMessages.querySelector('.alert');
-                    if (alert) {
-                        alert.classList.remove('show');
-                        setTimeout(() => alert.remove(), 150);
-                    }
-                }, 5000);
-            }
-        }
+        // Contact form now uses inline JavaScript in contact.html
+        // This function is preserved for future enhancements
+        console.log('Contact form initialized with mailto functionality');
     }
     
     // Smooth scrolling for anchor links
@@ -208,11 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Focus management for modals and forms
+    // Focus management for forms
     const firstFormInput = document.querySelector('#contactForm input[type="text"]');
     if (firstFormInput) {
         // Focus first input when contact form is scrolled into view
-        const contactSection = document.querySelector('#contactForm').closest('section');
+        const contactSection = firstFormInput.closest('section');
         if (contactSection) {
             const contactObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
