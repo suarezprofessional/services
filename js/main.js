@@ -158,3 +158,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Formspree recommended solution: Reset forms when leaving page
+window.onbeforeunload = () => {
+  for(const form of document.getElementsByTagName('form')) {
+    form.reset();
+  }
+}

@@ -7,7 +7,7 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 32771
+localPort = 35411
 externalPort = 3000
 
 [[ports]]
@@ -37,10 +37,10 @@ args = "Website Server"
 name = "Website Server"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npx http-server -p 5000 -a 0.0.0.0"
 waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
