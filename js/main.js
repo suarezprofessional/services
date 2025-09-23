@@ -1,339 +1,160 @@
-// Main JavaScript file for Suarez Professional Services
+// Simplified JavaScript for GitHub Pages compatibility
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Suarez Professional Services website loaded');
     
-    // Initialize all components
-    initNavbar();
-    initContactForm();
-    initSmoothScrolling();
-    initAnimations();
+    // Mobile menu click-away functionality
+    setupMobileMenuClickAway();
     
-    // Navbar functionality
-    function initNavbar() {
-        const navbar = document.querySelector('.navbar');
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        const navbarCollapse = document.querySelector('.navbar-collapse');
+    // Contact form reset functionality  
+    setupContactFormReset();
+    
+    // Phone number formatting
+    setupPhoneFormatting();
+    
+    // Smooth scrolling for anchor links
+    setupSmoothScrolling();
+});
+
+// Simple, reliable mobile menu click-away
+function setupMobileMenuClickAway() {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    
+    if (!navbarToggler || !navbarCollapse) return;
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        // Only act if we're in mobile view (toggler is visible)
+        if (window.innerWidth < 992) {
+            // If menu is open and click is outside navbar
+            if (navbarCollapse.classList.contains('show') && 
+                !e.target.closest('.navbar')) {
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+                navbarToggler.classList.add('collapsed');
+            }
+        }
+    });
+    
+    // Close menu when clicking nav links
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (window.innerWidth < 992) {
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+                navbarToggler.classList.add('collapsed');
+            }
+        });
+    });
+}
+
+// Simple contact form reset after Formspree return
+function setupContactFormReset() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+    
+    // Check URL for success indicators or if coming from Formspree
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrer = document.referrer || '';
+    
+    // Simple detection methods
+    const isFormspreeReturn = referrer.includes('formspree.io') || 
+                             urlParams.get('success') || 
+                             urlParams.get('submitted') ||
+                             window.location.hash === '#success';
+    
+    if (isFormspreeReturn) {
+        // Reset the form
+        contactForm.reset();
         
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow');
-            } else {
-                navbar.classList.remove('shadow');
+        // Clear all form fields manually  
+        const inputs = contactForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(function(input) {
+            if (input.type !== 'submit' && input.type !== 'button' && input.type !== 'hidden') {
+                input.value = '';
             }
         });
         
-        // Close mobile menu when clicking on a nav link
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                    navbarCollapse.classList.remove('show');
-                }
-            });
-        });
+        // Show success message
+        showSuccessMessage();
         
-        // Close mobile menu when clicking outside of it
-        document.addEventListener('click', function(event) {
-            // Check if mobile menu is visible (toggler is visible means we're in mobile view)
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                // Check if the menu is currently open
-                if (navbarCollapse.classList.contains('show')) {
-                    // Check if the click was outside the navbar
-                    if (!navbar.contains(event.target)) {
-                        navbarCollapse.classList.remove('show');
-                    }
-                }
-            }
-        });
-        
-        // Also close menu when clicking on page content (additional safeguard)
-        const pageContent = document.querySelectorAll('main, section, .container');
-        pageContent.forEach(function(content) {
-            content.addEventListener('click', function(event) {
-                if (window.getComputedStyle(navbarToggler).display !== 'none' && navbarCollapse.classList.contains('show')) {
-                    // Only close if we're not clicking inside the navbar itself
-                    if (!navbar.contains(event.target)) {
-                        navbarCollapse.classList.remove('show');
-                    }
-                }
-            });
-        });
+        // Clean the URL
+        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
     }
-    
-    // Contact form functionality with Formspree integration
-    function initContactForm() {
-        const contactForm = document.getElementById('contactForm');
-        
-        if (contactForm) {
-            // Check if user returned from Formspree and reset form
-            const urlParams = new URLSearchParams(window.location.search);
-            const referrer = document.referrer;
-            
-            // Reset form if coming back from Formspree or if there's a success parameter
-            if (referrer.includes('formspree.io') || urlParams.has('success') || urlParams.has('submitted')) {
-                contactForm.reset();
-                // Clear any persistent form data
-                const formInputs = contactForm.querySelectorAll('input, select, textarea');
-                formInputs.forEach(input => {
-                    if (input.type !== 'submit' && input.type !== 'button') {
-                        input.value = '';
-                    }
-                });
-                
-                // Show success message
-                const formMessages = document.getElementById('formMessages');
-                if (formMessages) {
-                    formMessages.innerHTML = `
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <i class="fas fa-check-circle me-2"></i>
-                            Thank you! Your message has been sent successfully. We'll get back to you soon.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    `;
-                }
-                
-                // Clean URL by removing parameters
-                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                window.history.replaceState({}, document.title, cleanUrl);
+}
+
+// Show success message
+function showSuccessMessage() {
+    const formMessages = document.getElementById('formMessages');
+    if (formMessages) {
+        formMessages.innerHTML = 
+            '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                '<i class="fas fa-check-circle me-2"></i>' +
+                'Thank you! Your message has been sent successfully. We\'ll get back to you soon.' +
+                '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>' +
+            '</div>';
+    }
+}
+
+// Phone number formatting
+function setupPhoneFormatting() {
+    const phoneInputs = document.querySelectorAll('input[type="tel"], #phone');
+    phoneInputs.forEach(function(input) {
+        input.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 6) {
+                value = '(' + value.substring(0,3) + ') ' + value.substring(3,6) + '-' + value.substring(6,10);
+            } else if (value.length >= 3) {
+                value = '(' + value.substring(0,3) + ') ' + value.substring(3);
             }
+            e.target.value = value;
+        });
+    });
+}
+
+// Smooth scrolling for anchor links
+function setupSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
             
-            // Add phone number formatting
-            const phoneInput = document.getElementById('phone');
-            if (phoneInput) {
-                phoneInput.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length >= 6) {
-                        value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-                    } else if (value.length >= 3) {
-                        value = value.replace(/(\d{3})(\d{3})/, '($1) $2');
-                    } else if (value.length >= 1) {
-                        value = value.replace(/(\d{1,3})/, '($1');
-                    }
-                    e.target.value = value;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const navbarHeight = document.querySelector('.navbar') ? 
+                                   document.querySelector('.navbar').offsetHeight : 0;
+                const targetPosition = target.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
-            
-            // Simple form validation - let Formspree handle the rest
-            contactForm.addEventListener('submit', function(e) {
-                const phoneField = document.getElementById('phone');
-                if (phoneField && phoneField.value && !phoneField.checkValidity()) {
+        });
+    });
+}
+
+// Additional simple form validation for contact form
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            const phoneField = document.getElementById('phone');
+            if (phoneField && phoneField.value) {
+                const phonePattern = /^\(\d{3}\) \d{3}-\d{4}$/;
+                if (!phonePattern.test(phoneField.value)) {
                     e.preventDefault();
                     alert('Please enter a valid phone number in the format: (123) 456-7890');
                     phoneField.focus();
                     return false;
                 }
-                
-                console.log('Contact form submitted to Formspree');
-            });
-        }
-    }
-    
-    // Smooth scrolling for anchor links
-    function initSmoothScrolling() {
-        const links = document.querySelectorAll('a[href^="#"]');
-        
-        links.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                
-                // Skip if href is just "#"
-                if (href === '#') return;
-                
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    
-                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = target.offsetTop - navbarHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    }
-    
-    // Initialize animations
-    function initAnimations() {
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        // Observe elements for animation
-        const animatedElements = document.querySelectorAll('.service-card, .feature-item, .package-card, .service-feature');
-        animatedElements.forEach(function(element) {
-            observer.observe(element);
-        });
-    }
-    
-    // Utility functions
-    
-    // Format phone number
-    function formatPhoneNumber(phoneNumber) {
-        const cleaned = ('' + phoneNumber).replace(/\D/g, '');
-        const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-        if (match) {
-            return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-        }
-        return phoneNumber;
-    }
-    
-    // Add phone number formatting to phone inputs
-    const phoneInputs = document.querySelectorAll('input[type="tel"]');
-    phoneInputs.forEach(function(input) {
-        input.addEventListener('input', function() {
-            this.value = formatPhoneNumber(this.value);
-        });
-    });
-    
-    // Enhanced accessibility
-    
-    // Add keyboard navigation for cards
-    const interactiveCards = document.querySelectorAll('.service-card, .package-card');
-    interactiveCards.forEach(function(card) {
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        
-        card.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                const link = this.querySelector('a');
-                if (link) {
-                    link.click();
-                }
             }
         });
-    });
-    
-    // Focus management for forms
-    const firstFormInput = document.querySelector('#contactForm input[type="text"]');
-    if (firstFormInput) {
-        // Focus first input when contact form is scrolled into view
-        const contactSection = firstFormInput.closest('section');
-        if (contactSection) {
-            const contactObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting && window.innerWidth > 768) {
-                        setTimeout(() => firstFormInput.focus(), 500);
-                        contactObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            contactObserver.observe(contactSection);
-        }
     }
-    
-    // Print functionality
-    const printButton = document.querySelector('.print-button');
-    if (printButton) {
-        printButton.addEventListener('click', function() {
-            window.print();
-        });
-    }
-    
-    // Enhanced error handling
-    window.addEventListener('error', function(e) {
-        console.error('JavaScript error:', e.error);
-        
-        // Show user-friendly error message for form submissions
-        const formMessages = document.getElementById('formMessages');
-        if (formMessages && e.error && e.error.message.includes('form')) {
-            formMessages.innerHTML = `
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    There was a technical issue with the form. Please try again or contact us directly.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            `;
-        }
-    });
-    
-    // Performance optimization - lazy load images if any are added later
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    if (lazyImages.length > 0) {
-        const imageObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        lazyImages.forEach(function(img) {
-            imageObserver.observe(img);
-        });
-    }
-    
-    console.log('Suarez Professional Services website initialized successfully');
 });
-
-// Additional utility functions available globally
-
-// Scroll to top function
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// Toggle mobile menu
-function toggleMobileMenu() {
-    const navbarCollapse = document.querySelector('.navbar-collapse');
-    navbarCollapse.classList.toggle('show');
-}
-
-// Copy text to clipboard
-function copyToClipboard(text) {
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function() {
-            showNotification('Copied to clipboard!');
-        });
-    } else {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        showNotification('Copied to clipboard!');
-    }
-}
-
-// Show notification
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-    notification.style.cssText = 'top: 100px; right: 20px; z-index: 1050; max-width: 300px;';
-    notification.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Auto remove after 3 seconds
-    setTimeout(function() {
-        if (notification.parentNode) {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 150);
-        }
-    }, 3000);
-}

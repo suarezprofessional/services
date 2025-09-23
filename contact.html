@@ -65,6 +65,10 @@
                     <div class="bg-light p-5 rounded shadow-sm">
                         <h2 class="fw-bold mb-4">Send Us a Message</h2>
                         <form id="contactForm" action="https://formspree.io/f/xgvnwqre" method="POST">
+                            <!-- Formspree configuration for GitHub Pages -->
+                            <input type="hidden" name="_next" value="https://suarezprofessionalservices.github.io/contact.html?success=1">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission - Suarez Professional Services">
+                            <input type="hidden" name="_cc" value="peter@suarezprofessionalservices.com">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="firstName" class="form-label">First Name *</label>
