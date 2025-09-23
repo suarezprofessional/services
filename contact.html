@@ -80,11 +80,11 @@
                                 </div>
                                 <!-- Hidden fields for Formspree configuration -->
                                 <input type="hidden" name="_to" value="peter@suarezprofessionalservices.com">
-                                <input type="hidden" name="_next" value="https://suarezprofessionalservices.com/thank-you.html">
                                 <input type="hidden" name="_subject" value="New Contact Form Submission - Suarez Professional Services">
                                 <div class="col-md-6">
                                     <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                    <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
+                                    <div class="form-text">Format: 123-456-7890</div>
                                 </div>
                                 <div class="col-12">
                                     <label for="service" class="form-label">Service of Interest *</label>

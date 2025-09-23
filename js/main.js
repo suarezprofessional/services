@@ -36,72 +36,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form functionality with Formspree integration
     function initContactForm() {
         const contactForm = document.getElementById('contactForm');
-        const formMessages = document.getElementById('formMessages');
         
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                // Show loading state
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitButton.innerHTML;
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending Message...';
-                submitButton.disabled = true;
-                
-                // Clear any previous messages
-                if (formMessages) {
-                    formMessages.innerHTML = '';
-                }
-                
-                // Basic client-side validation
-                const requiredFields = contactForm.querySelectorAll('[required]');
-                let isValid = true;
-                
-                requiredFields.forEach(function(field) {
-                    if (!field.value.trim()) {
-                        isValid = false;
-                        field.classList.add('is-invalid');
-                    } else {
-                        field.classList.remove('is-invalid');
+            // Add phone number formatting
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 6) {
+                        value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+                    } else if (value.length >= 3) {
+                        value = value.replace(/(\d{3})(\d{3})/, '$1-$2');
                     }
+                    e.target.value = value;
                 });
-                
-                if (!isValid) {
+            }
+            
+            // Simple form validation - let Formspree handle the rest
+            contactForm.addEventListener('submit', function(e) {
+                const phoneField = document.getElementById('phone');
+                if (phoneField && phoneField.value && !phoneField.checkValidity()) {
                     e.preventDefault();
-                    showFormMessage('error', 'Please fill in all required fields correctly.');
-                    
-                    // Reset button
-                    submitButton.innerHTML = originalText;
-                    submitButton.disabled = false;
-                    return;
+                    alert('Please enter a valid phone number in the format: 123-456-7890');
+                    phoneField.focus();
+                    return false;
                 }
                 
-                // Form will be submitted normally to Formspree
-                // Formspree will handle the redirect to thank-you.html
                 console.log('Contact form submitted to Formspree');
             });
-        }
-        
-        // Show form messages
-        function showFormMessage(type, message) {
-            if (formMessages) {
-                const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
-                const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-triangle';
-                
-                formMessages.innerHTML = `
-                    <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-                        <i class="${icon} me-2"></i>${message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                `;
-                
-                // Auto hide after 5 seconds
-                setTimeout(function() {
-                    const alert = formMessages.querySelector('.alert');
-                    if (alert) {
-                        alert.classList.remove('show');
-                        setTimeout(() => alert.remove(), 150);
-                    }
-                }, 5000);
-            }
         }
     }
     
