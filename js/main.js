@@ -44,9 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 phoneInput.addEventListener('input', function(e) {
                     let value = e.target.value.replace(/\D/g, '');
                     if (value.length >= 6) {
-                        value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+                        value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
                     } else if (value.length >= 3) {
-                        value = value.replace(/(\d{3})(\d{3})/, '$1-$2');
+                        value = value.replace(/(\d{3})(\d{3})/, '($1) $2');
+                    } else if (value.length >= 1) {
+                        value = value.replace(/(\d{1,3})/, '($1');
                     }
                     e.target.value = value;
                 });
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const phoneField = document.getElementById('phone');
                 if (phoneField && phoneField.value && !phoneField.checkValidity()) {
                     e.preventDefault();
-                    alert('Please enter a valid phone number in the format: 123-456-7890');
+                    alert('Please enter a valid phone number in the format: (123) 456-7890');
                     phoneField.focus();
                     return false;
                 }
