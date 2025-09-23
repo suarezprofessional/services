@@ -31,6 +31,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+        
+        // Close mobile menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            // Check if mobile menu is visible (toggler is visible means we're in mobile view)
+            if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                // Check if the menu is currently open
+                if (navbarCollapse.classList.contains('show')) {
+                    // Check if the click was outside the navbar
+                    if (!navbar.contains(event.target)) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            }
+        });
+        
+        // Also close menu when clicking on page content (additional safeguard)
+        const pageContent = document.querySelectorAll('main, section, .container');
+        pageContent.forEach(function(content) {
+            content.addEventListener('click', function(event) {
+                if (window.getComputedStyle(navbarToggler).display !== 'none' && navbarCollapse.classList.contains('show')) {
+                    // Only close if we're not clicking inside the navbar itself
+                    if (!navbar.contains(event.target)) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            });
+        });
     }
     
     // Contact form functionality with Formspree integration
@@ -38,6 +65,38 @@ document.addEventListener('DOMContentLoaded', function() {
         const contactForm = document.getElementById('contactForm');
         
         if (contactForm) {
+            // Check if user returned from Formspree and reset form
+            const urlParams = new URLSearchParams(window.location.search);
+            const referrer = document.referrer;
+            
+            // Reset form if coming back from Formspree or if there's a success parameter
+            if (referrer.includes('formspree.io') || urlParams.has('success') || urlParams.has('submitted')) {
+                contactForm.reset();
+                // Clear any persistent form data
+                const formInputs = contactForm.querySelectorAll('input, select, textarea');
+                formInputs.forEach(input => {
+                    if (input.type !== 'submit' && input.type !== 'button') {
+                        input.value = '';
+                    }
+                });
+                
+                // Show success message
+                const formMessages = document.getElementById('formMessages');
+                if (formMessages) {
+                    formMessages.innerHTML = `
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Thank you! Your message has been sent successfully. We'll get back to you soon.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    `;
+                }
+                
+                // Clean URL by removing parameters
+                const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+            
             // Add phone number formatting
             const phoneInput = document.getElementById('phone');
             if (phoneInput) {
