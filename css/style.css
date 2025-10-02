@@ -101,6 +101,17 @@ body {
     transform: translateY(-3px);
 }
 
+.service-feature ul li {
+    display: flex;
+    align-items: flex-start;
+}
+
+.service-feature ul li i {
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    margin-top: 0.15rem;
+}
+
 /* Package Cards */
 .package-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
