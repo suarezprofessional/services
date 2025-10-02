@@ -318,20 +318,21 @@ body {
     }
     
     .service-feature .d-flex {
-        flex-direction: column;
-        align-items: center !important;
-        text-align: center;
+        align-items: flex-start !important;
     }
     
     .service-feature .d-flex i {
-        margin-right: 0 !important;
-        margin-bottom: 1rem;
-        font-size: 2rem !important;
+        margin-right: 0.75rem !important;
+        margin-top: 0.25rem;
+        font-size: 1.5rem !important;
+        flex-shrink: 0;
+        width: 1.5rem;
     }
     
     .service-feature h3 {
         font-size: 1.1rem;
         margin-bottom: 1rem;
+        text-align: left;
     }
 }
 
