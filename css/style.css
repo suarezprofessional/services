@@ -114,21 +114,19 @@ body {
 
 /* Zoho Books Items Spacing */
 @media (max-width: 576px) {
-    .bg-light .row.g-3 {
-        display: flex;
-        flex-direction: column;
-    }
-    
     .bg-light .row.g-3 .col-sm-6 {
-        width: 100%;
-        display: contents;
+        margin-bottom: 0 !important;
     }
     
-    .bg-light .row.g-3 .d-flex {
+    .bg-light .row.g-3 .col-sm-6 .d-flex.mb-3 {
         margin-bottom: 1.5rem !important;
     }
     
-    .bg-light .row.g-3 .d-flex:last-child {
+    .bg-light .row.g-3 .col-sm-6:first-child .d-flex:last-child {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .bg-light .row.g-3 .col-sm-6:last-child .d-flex:last-child {
         margin-bottom: 0 !important;
     }
 }
