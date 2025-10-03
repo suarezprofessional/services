@@ -113,12 +113,24 @@ body {
 }
 
 /* Zoho Books Items Spacing */
-.bg-light .row.g-3 .d-flex {
-    margin-bottom: 1.5rem !important;
-}
-
-.bg-light .row.g-3 .col-sm-6:last-child .d-flex:last-child {
-    margin-bottom: 0 !important;
+@media (max-width: 576px) {
+    .bg-light .row.g-3 {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bg-light .row.g-3 .col-sm-6 {
+        width: 100%;
+        display: contents;
+    }
+    
+    .bg-light .row.g-3 .d-flex {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .bg-light .row.g-3 .d-flex:last-child {
+        margin-bottom: 0 !important;
+    }
 }
 
 /* Package Cards */
