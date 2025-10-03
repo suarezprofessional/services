@@ -112,6 +112,15 @@ body {
     margin-top: 0.15rem;
 }
 
+/* Zoho Books Items Spacing */
+.bg-light .row.g-3 .d-flex {
+    margin-bottom: 1.5rem !important;
+}
+
+.bg-light .row.g-3 .col-sm-6:last-child .d-flex:last-child {
+    margin-bottom: 0 !important;
+}
+
 /* Package Cards */
 .package-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
